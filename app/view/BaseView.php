@@ -28,10 +28,9 @@ class BaseView
     public function insertEntities($arrToMap)
     {        
         
-        array_map(function ($arrKeyTemplate, $arrValueTemplate) {
-            $elellm = 'pageTemplate';
+        array_map(function ($arrKeyTemplate, $arrValueTemplate) {            
             if (!is_int($arrKeyTemplate)) {
-                $this->$elellm[$arrKeyTemplate] = $this->$arrKeyTemplate;
+                $this->pageTemplate[$arrKeyTemplate] = $this->$arrKeyTemplate;
             }
         }, array_keys($arrToMap), $arrToMap);
     }
