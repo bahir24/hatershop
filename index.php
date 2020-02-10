@@ -5,6 +5,9 @@
     use view\BaseView;
     use view\ExtendView;
 
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL); 
+
     define('ROOT', __DIR__.'/app');
 
     spl_autoload_register(function (string $className) {
