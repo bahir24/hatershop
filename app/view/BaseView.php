@@ -32,6 +32,9 @@ class BaseView
 
     public function collectElements(){
         $this->header = $this->insertEntities('{(nav)}', $this->nav, $this->header);
+        $arrReplace = ['{(cardMain)}', '{(cardEvent)}', '{(cardTime)}', '{(cardDate)}', '{(cardAnimals)}'];
+        $arrCards = [$this->cardMain, $this->cardEvent, $this->cardTime, $this->cardDate, $this->cardAnimals];
+        $this->section = $this->insertEntities($arrReplace, $arrCards, $this->section);
     }
     
 
@@ -45,61 +48,72 @@ class BaseView
     public $section = '
         <section>
             <div class="container">
-                <div class="card mb-3">
-                    <img src="app/img/night.jpg" class="card-img-top day-time-img" alt="night">
-                    <div class="card-body">
-                    <h5 class="card-title">Ночное небо</h5>
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-0">Dolor amet enim excepteur mollit nisi. Et non nisi pariatur qui magna quis magna mollit.</p>
-                        <footer class="blockquote-footer">Так говорил Великий<cite title="Название источника">Имя Великого</cite></footer>
-                    </blockquote>                    
-                    </div>
-                </div>
-
-                <div class="row d-flex flex-wrap">
-                    <div class="col-12 col-sm-6 col-lg-4 order-0 mb-4">
-                        <div class="card">
-                            <img class="card-img-top" src="app/img/evening_event.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Куда пойти вечером</h5>
-                                <p class="card-text d-none d-sm-block">Adipisicing anim fugiat est voluptate sint labore sunt.</p>
-                                <a href="#" class="btn btn-primary">Читать</a>
-                            </div>
-                        </div>
+                {(cardMain)}
+                <div class="row d-flex flex-wrap mb-4">
+                    <div class="col-12 col-sm-6 col-lg-4 order-0">
+                        {(cardEvent)}
                     </div>
                     <div class="col-12 col-lg-5 order-2 order-lg-1">
-                        <div class="card mb-lg-5">
-                            <div class="card-body">
-                                <h5 class="card-title">Часы</h5>
-                                <p class="card-text d-none d-sm-block">Здесь будет время</p>                               
-                            </div>
-                            <div class="card-footer text-muted">14:33</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Дата</h5>
-                                <p class="card-text d-none d-sm-block">Здесь будет дата</p>
-                            </div>
-                            <div class="card-footer text-muted">10 февраля, понедельник</div>
-                        </div>
+                        {(cardTime)}
+                        {(cardDate)}
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 order-1 order-lg-2">
-                        <div class="card w-100">
-                            <img class="card-img-top" src="app/img/zver1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Что-то про животных</h5>
-                                <p class="card-text d-none d-sm-block">Exercitation cupidatat magna aliquip nostrud.</p>
-                                <a href="#" class="btn btn-primary">Смотреть</a>
-                            </div>
-                        </div>
+                        {(cardAnimals)}
                     </div>
-                </div>
-                    
-                
-                
+                </div>                                                    
             </div>
-        </section>
+        </section>';
+
+    public $cardMain = '
+        <div class="card mb-3">
+            <img src="app/img/night.jpg" class="card-img-top day-time-img" alt="night">
+            <div class="card-body">
+                <h5 class="card-title">Ночное небо</h5>
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">Dolor amet enim excepteur mollit nisi. Et non nisi pariatur qui magna quis magna mollit.</p>
+                <footer class="blockquote-footer">Так говорил Великий<cite title="Название источника">Имя Великого</cite></footer>
+            </blockquote>                    
+            </div>
+        </div>';
+
+    public $cardEvent = '
+        <div class="card h-100">
+            <img class="card-img-top" src="app/img/evening_event.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Куда пойти вечером</h5>
+                <p class="card-text d-none d-sm-block">Adipisicing anim fugiat est voluptate sint labore sunt.</p>
+                <a href="#" class="btn btn-primary">Читать</a>
+            </div>
+        </div>';
+
+    public $cardTime = '
+        <div class="card mb-lg-4">
+            <div class="card-body">
+                <h5 class="card-title">Часы</h5>
+                <p class="card-text d-none d-sm-block">Здесь будет время</p>                               
+            </div>
+            <div class="card-footer text-muted">14:33</div>
+        </div>';
+
+    public $cardDate = '
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Дата</h5>
+                <p class="card-text d-none d-sm-block">Здесь будет дата</p>
+            </div>
+            <div class="card-footer text-muted">10 февраля, понедельник</div>
+        </div>
     ';
+
+    public $cardAnimals = '
+        <div class="card  h-100 w-100">
+            <img class="card-img-top" src="app/img/zver1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Что-то про животных</h5>
+                <p class="card-text d-none d-sm-block">Exercitation cupidatat magna aliquip nostrud.</p>
+                <a href="#" class="btn btn-primary">Смотреть</a>
+            </div>
+        </div>';
 
     public $footer = '
         <footer>            
