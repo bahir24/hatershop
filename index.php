@@ -12,4 +12,4 @@
     });
 
     $staticPage = new BaseView;
-    $staticPage->BuildLayOut();
+    $staticPage->pageRender();

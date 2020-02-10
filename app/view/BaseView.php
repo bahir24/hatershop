@@ -2,13 +2,14 @@
 
 namespace view;
 
-class BaseView {
-    public $layOut = ['
+class BaseView
+{
+    // public
+    public $pageTemplate = ['
         <!DOCTYPE html>
             <html>',
                 'head' => '',
-                '<body>
-                    <h1>TEST</h1>',
+                '<body>',
                     'header' => '',
                     'footer' => '',
                     '<script src="source/jquery/DevjQuery3.4.1.js"></script>
@@ -18,25 +19,53 @@ class BaseView {
             </html>',
         ];
 
-    public function buildLayOut(){             
-        array_map(function($arrKey){
-            if (!is_int($arrKey)) {
-                $this->layOut[$arrKey] = $this->$arrKey;
-            }
-        }, array_keys($this->layOut), $this->layOut);
+    public function pageRender()
+    {
+        $this->insertEntities($this->pageTemplate);
+        echo implode($this->pageTemplate);
+    }
 
-        echo implode($this->layOut);
+    public function insertEntities($arrToMap)
+    {        
+        
+        array_map(function ($arrKeyTemplate, $arrValueTemplate) {
+            $elellm = 'pageTemplate';
+            if (!is_int($arrKeyTemplate)) {
+                $this->$elellm[$arrKeyTemplate] = $this->$arrKeyTemplate;
+            }
+        }, array_keys($arrToMap), $arrToMap);
     }
 
     public $header = '
         <header>
-            <nav>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="logo navbar-brand" href="#"><img class="img-fluid rounded mx-auto d-block" src="app/img/logo.jpg"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>          
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Gallery</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    </div>
+                </nav>
+            </div>            
         </header>';
 
     public $footer = '
@@ -55,5 +84,12 @@ class BaseView {
             <meta name="viewport" content="width=device-width", initial-scale="1.0">
             <title>Document</title>
             <link rel="stylesheet" href="app/css/main.css">
-        </head>';   
+        </head>';
+    public $logo = '
+        <head>
+            <meta name="viewport" content="width=device-width", initial-scale="1.0">
+            <title>Document</title>
+            <link rel="stylesheet" href="app/css/main.css">
+        </head>';
+
 }
