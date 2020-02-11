@@ -22,7 +22,7 @@ class ExtendedView extends BaseView {
         $this->eventCard = $this->model->eventCard;
         $this->animalCard = $this->model->animalCard;
         $this->nowDate = date('d M');
-        $this->nowTime = date('h:m');
+        $this->nowTime = date('h:i:s');
         $this->nowTimeHours = date('h');
         $this->section = str_replace('<section>', $this->structureOfContent, $this->section);
     }
