@@ -1,9 +1,10 @@
 <?php
 
-    namespace view;
+    
 
     use view\BaseView;
-    use view\ExtendView;
+    use view\ExtendedView;
+    
 
     ini_set('display_errors', 1);
     error_reporting(E_ALL); 
@@ -14,5 +15,5 @@
         require_once ROOT . '/' . str_replace('\\', '/', $className) . '.php';
     });
 
-    $staticPage = new BaseView;
+    $staticPage = new ExtendedView;
     $staticPage->pageRender();

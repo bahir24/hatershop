@@ -26,7 +26,7 @@ section {
     text-align: center;
 }
 
-.day-time-img{
+.day-time-img{    
     max-height: 150px;
     object-fit: cover;
     object-position: top;
